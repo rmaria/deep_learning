@@ -10,7 +10,7 @@ Deci, urmati pasii:
 
 - Unzip (despacheteaza) fisierul descarcat
 
-- Downloadeaza acest model preantrenat: https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_
+- Downloadeaza acest model preantrenat: [https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_]
 
 - Instaleaza docker-ului: https://docs.docker.com/install/   
 
