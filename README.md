@@ -10,8 +10,6 @@ Deci, urmati pasii:
 
 - Unzip (despacheteaza) fisierul descarcat
 
-- Downloadeaza acest model preantrenat: [https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_](https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_)
-
 - Instaleaza docker-ului: https://docs.docker.com/install/   
 
 - Builduirea, in felul urmator:
@@ -28,6 +26,9 @@ Deci, urmati pasii:
 docker run -it -p 8888:8888 -v /home/merlin/coderdojo/docker/hands-on:/notebooks/hands-on hands-on
 ```
 Comanda aceasta porneste serverul. Pentru a opri serverul: <kbd>ctr</kbd>+<kbd>C</kbd>
+
+- Downloadeaza acest model preantrenat: [https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_](https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_)
+
      
     
 Succes!
