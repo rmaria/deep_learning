@@ -18,7 +18,7 @@ Deci, urmati pasii:
 
     - Deschideti un terminal (<kbd>ctr</kbd>+<kbd>alt</kbd>+<kbd>T</kbd> pt Ubuntu, pt Windows: https://www.quora.com/How-do-I-open-terminal-in-windows )
 
-    - Inserati comanda:   `docker build -t hands-on .`  (cu punct la sfarsit)
+    - Inserati comanda:   `docker build -t Dockerfile .`  (cu punct la sfarsit)
 
 - Testati instalarea:
 
