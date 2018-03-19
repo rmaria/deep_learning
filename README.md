@@ -1,7 +1,4 @@
 # Hands-on Deep-Learning 
-
-c = ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff',
-         '#ff00ff', '#990000', '#999900', '#009900', '#009999']
          
 Pentru a putea instala mai usor pachetele de Deep Learning pentru Sambata la CoderDojo, am reusit sa configuram un **docker**.
 Am salva timp daca ati reusi sa il instalati voi pe sistemul vostru. Linkul unde gasiti toate instructiunile de instalare, in functie de sistemul vostru de operare il gasiti mai jos.
