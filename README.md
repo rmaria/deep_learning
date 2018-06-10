@@ -22,8 +22,10 @@ Deci, urmati pasii:
 - Testati instalarea:
 
 ```
-docker run -it -p 8888:8888 -v /home/merlin/coderdojo/docker/hands-on:/notebooks/hands-on hands-on
+docker run -it -p 8888:8888 -v /absolute/path/to/folder/on/host/machine:/notebooks/hands-on hands-on
 ```
+/absolute/path/to/folder/on/host/machine trebuie inlocuit cu adresa folderului de pe PC care se vrea sincronizat in containerul de Docker
+
 Comanda aceasta porneste serverul. Pentru a opri serverul: <kbd>ctr</kbd>+<kbd>C</kbd>
 
 - Downloadeaza acest model preantrenat: [https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_](https://drive.google.com/open?id=1zIFAkmT-uW4TzgQUprDTXouUzKCgN-X_)
