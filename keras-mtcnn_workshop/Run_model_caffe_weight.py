@@ -5,7 +5,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 from MTCNN import create_Kao_Onet, create_Kao_Rnet, create_Kao_Pnet
+from save_weights import retrieve_original_weights_as_dict
+from python_model import custom_Onet_original
 
+
+# for saving the weights and biases dictionary
+try:
+    import cPickle as pickle
+except ImportError:  # python 3.x
+    import pickle
 
 Pnet = create_Kao_Pnet(r'12net.h5')
 Rnet = create_Kao_Rnet(r'24net.h5')
@@ -15,7 +23,21 @@ Onet = create_Kao_Onet(r'48net.h5')  # will not work. caffe and TF incompatible
 RUN_VIDEO = False
 RUN_webcam = True
 RUN_picture = False
+use_custom_model = True
 
+# Save the weights for the Onet network, for later use
+save_weights_as_dict = False
+weights_dict_file = 'ONet_weights_dict.p' 
+VERBOSE = True
+
+if(save_weights_as_dict):
+    all_weights_original_dict = retrieve_original_weights_as_dict(Onet, VERBOSE)
+    with open(weights_dict_file, 'wb') as fp:
+        pickle.dump(all_weights_original_dict, fp, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open(weights_dict_file, 'rb') as fp:
+    weights_biases_original_model = pickle.load(fp)
+    
 def detectFace(img, threshold):
 
     caffe_img = (img.copy() - 127.5) / 127.5
@@ -40,14 +62,14 @@ def detectFace(img, threshold):
         
         classifier = Pnet.predict(input)[0]                    # shape (1,outshape1, outshape2,2)     where outshape1 = the output of the image after applying KaoPnet forward pass
         bbox_regressor = Pnet.predict(input)[1]                # shape (1, outshape1, outshape2,4)
-        print("DEBUG 0")
+        #print("DEBUG 0")
         classifier = np.array(classifier)
         bbox_regressor = np.array(bbox_regressor)
-        print("classifier.shape: ",classifier.shape)
-        print("bbox_regressor.shape: ",bbox_regressor.shape)
-        print("------------------------")
-        print("classifier = :",classifier)
-        print("------------------------")
+        #print("classifier.shape: ",classifier.shape)
+        #print("bbox_regressor.shape: ",bbox_regressor.shape)
+        #print("------------------------")
+        #print("classifier = :",classifier)
+        #print("------------------------")
         # ---------------------------
         
         out.append(ouput)
@@ -114,8 +136,13 @@ def detectFace(img, threshold):
         crop_number += 1
 
     predict_batch = np.array(predict_batch)
-
-    output = Onet.predict(predict_batch)
+    
+    if(use_custom_model):
+        output = custom_Onet_original(weights_biases_original_model, predict_batch)
+    else:
+        output = Onet.predict(predict_batch)
+    
+    
     cls_prob = output[0]
     roi_prob = output[1]
     pts_prob = output[2]  # index
