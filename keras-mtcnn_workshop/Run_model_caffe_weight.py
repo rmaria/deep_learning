@@ -23,20 +23,21 @@ Onet = create_Kao_Onet(r'48net.h5')  # will not work. caffe and TF incompatible
 RUN_VIDEO = False
 RUN_webcam = True
 RUN_picture = False
-use_custom_model = True
+use_custom_model = False
 
 # Save the weights for the Onet network, for later use
 save_weights_as_dict = False
 weights_dict_file = 'ONet_weights_dict.p' 
-VERBOSE = True
+VERBOSE = False
 
 if(save_weights_as_dict):
     all_weights_original_dict = retrieve_original_weights_as_dict(Onet, VERBOSE)
     with open(weights_dict_file, 'wb') as fp:
         pickle.dump(all_weights_original_dict, fp, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open(weights_dict_file, 'rb') as fp:
-    weights_biases_original_model = pickle.load(fp)
+if(use_custom_model):
+    with open(weights_dict_file, 'rb') as fp:
+        weights_biases_original_model = pickle.load(fp)
     
 def detectFace(img, threshold):
 
